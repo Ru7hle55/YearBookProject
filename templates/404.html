@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <!-- 404 page -->
+    <div class="not-found-img">
+        <img src="{% static '/images/error_404.png' %}" alt="404 not found">
+    </div>
+
+    <div class="not-found">
+        <h1>
+            Uh oh,<br> something broke.
+        </h1>
+
+        <h3>Error 404 - page not found.</h3>
+        <!-- Link to Home Page -->
+        <a href="{% url 'home-page' %}">
+            <button>Return to My Story Book</button>
+        </a>
+    </div>
+    <!-- End 404 page -->
+{% endblock %}

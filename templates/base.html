@@ -1,0 +1,93 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<!-- Starts Head Section -->
+<head>
+    <link rel="stylesheet"
+          href="{% static '/css/styles.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static '/images/story_icon.jpeg' %}">
+    <title>My Story Book</title>
+</head>
+<!-- End Head Section -->
+
+<!-- Starts Body Section -->
+<body>
+
+<!-- Starts Header Section with Navigation Bar -->
+<header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <!-- Link to Home Page -->
+                <a href="{% url 'home-page' %}">
+                    <img width="50px" src="{% static '/images/story_icon.jpeg' %}" alt="img1">
+                </a>
+                <!-- Link to Home Page -->
+                <a class="home" href="{% url 'home-page' %}">
+                    <i>My Story Book</i>
+                </a>
+            </div>
+
+            <div class="nav-links">
+                <ul class="nav-group">
+                    <li class="nav-item">
+                        <!-- Link to Add Story Page -->
+                        <a href="{% url 'add-story' %}">
+                            <i>Make Story</i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <!-- Link to Add Photo Page -->
+                        <a href="{% url 'photo-add' %}">
+                            <i>Add Photo</i>
+                        </a>
+                    </li>
+                    {% if not request.user.is_authenticated %}
+                        <li class="nav-item">
+                            <!-- Link to Login Page -->
+                            <a href="{% url 'login' %}">
+                                <i>Login</i>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <!-- Link to Register Page -->
+                            <a href="{% url 'register' %}">
+                                <i>Register</i>
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <!-- Link to Profile Details Page -->
+                            <a href="{% url 'profile-details' request.user.pk %}">
+                                <i>My Profile</i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <!-- Link to Profile Logout -->
+                            <a href="{% url 'logout' %}">
+                                <i>Logout</i>
+                            </a>
+                    {% endif %}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<!-- End Header Section with Navigation Bar -->
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+<!-- Starts Footer Section -->
+<div class="footer">
+		<span class="footer-section">
+			© 2023 MY YEAR BOOK EXAM PROJECT FOR PYTHON WEB MODULE - METODI IVANOV
+		</span>
+</div>
+<!-- End Footer Section -->
+
+</body>
+</html>

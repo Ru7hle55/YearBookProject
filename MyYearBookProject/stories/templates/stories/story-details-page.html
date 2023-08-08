@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="story-profile">
+        <!-- Start Story Personal Data Section -->
+        <div class="profile">
+            <div class="profile-data">
+                <div class="profile_img">
+                    <div class="image">
+                        <!-- Story URL Image -->
+                        <img src="{{ story.story_photo }}"
+                             alt="img8">
+                    </div>
+                </div>
+                <div class="personal">
+                    <div class="edit">
+                        <!-- Story Name -->
+                        <p>{{ story.name }}</p>
+                        <!-- Story Edit Button -->
+                        {% if is_owner == request.user %}
+                            <a href="{% url 'edit-story' user.username story.slug %}">
+                                <img class="edit-img" src="{% static '/images/edit-pen-icon-6.jpg' %}" alt="edit button">
+                            </a>
+                            <!-- Story Delete Button -->
+                            <a href="{% url 'delete-story' user.username story.slug %}">
+                                <img class="bin-img" src="{% static '/images/icon-remove-22.jpg' %}" alt="bin button">
+                            </a>
+                        {% endif %}
+                    </div>
+                    <div class="date">
+                        <!-- If date of story -->
+                        {% if story.date_of_story %}
+                            <p>Date of story: {{ story.date_of_story }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="data">
+                        <!-- Story Total Photos -->
+                        <span>{{ all_photos.count }}</span>
+                        <p>photos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Story Personal Data Section -->
+
+        <div class="story-posts">
+
+            <!-- IF Photos Start Story Photos Post Section -->
+            {% if all_photos %}
+                {% include 'common/stories-posts.html' %}
+                <!-- IF Photos End Story Photos Post Section -->
+
+            <!-- IF NOT Photos Show No Post Image -->
+            {% else %}
+                <img class="no-posts" src="{% static '/images/no_posts.png' %}" alt="no posts image">
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

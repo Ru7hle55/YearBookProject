@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+    <!-- Start Add Story Section-->
+    <div class="edit-delete edit-photo">
+        <h2>Add story</h2>
+
+        <!-- Start Add Story Form -->
+        <form method='post'>
+            {{ form.as_p }}
+            {% csrf_token %}
+            <!-- Add Story Button -->
+            <button class="add-btn" type="submit">Add story</button>
+        </form>
+        <!-- End Add Story Form -->
+
+    </div>
+    <!-- End Add Story Section -->
+{% endblock %}

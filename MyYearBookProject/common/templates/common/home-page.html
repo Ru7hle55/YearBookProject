@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <div class="col-9">
+
+            <!-- Start Searchbar Form -->
+            <form class="searchbar" method="post">
+                {{ search_form }}
+                {% csrf_token %}
+                <button>
+                    <img src="{% static '/images/search.png' %}" height="18" alt="img2">
+                </button>
+            </form>
+            <!-- End Searchbar Form -->
+
+            <!-- Display search results or "nothing found" image -->
+                {% if not all_photos %}
+                    <div class="search-results">
+                        <!-- Display "nothing found" image -->
+                        <img src="{% static 'images/nothing_found_search.gif' %}" alt="Nothing Found">
+                    </div>
+                {% endif %}
+
+
+            <!-- Start Story Photos Post Section -->
+            {% include 'common/stories-posts.html' %}
+            <!-- End Story Photos Post Section -->
+
+        </div>
+    </div>
+{% endblock %}

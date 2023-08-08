@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+    <!-- Start Edit Story Section -->
+    <div class="edit-delete edit-photo">
+        <h2>Edit Story</h2>
+        <!-- Start Edit Story From -->
+        <form method="post">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <!-- Edit Story Button -->
+            <button class="edit-btn" type="submit">Edit</button>
+        </form>
+        <!-- End Edit Story Form -->
+
+    </div>
+    <!-- End Edit Story Section -->
+{% endblock %}

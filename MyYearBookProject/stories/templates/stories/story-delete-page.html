@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+    <!-- Starts Delete Story Section -->
+    <div class="edit-delete edit-photo">
+        <h2>Delete Story</h2>
+        <!-- Starts Delete Story Form -->
+        <form method="post" action="#">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <!-- Delete Story Button -->
+            <button class="delete-btn" type="submit">Delete</button>
+            <!-- Go Back Button -->
+            <a class="btn btn-primary" href="javascript:history.back()">
+                <button class="edit-btn" type="button">Go back</button>
+            </a>
+        </form>
+        <!-- End Delete Story Form -->
+    </div>
+    <!-- End Delete Story Section -->
+{% endblock %}
