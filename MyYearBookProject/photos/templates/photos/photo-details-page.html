@@ -198,7 +198,8 @@
 
                     <!-- Start Add Comments Form -->
                     <form method="post" action="{% url 'comments' photo.id %}">
-                        {{ comment_form }}
+                        {{ comment_form.comment_text.validators.errors }}
+                        {{ comment_form.comment_text }}
                         {% csrf_token %}
                         <!-- Post Comments Button -->
                         <button type="submit">Post</button>

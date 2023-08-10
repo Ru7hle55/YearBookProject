@@ -32,7 +32,7 @@ def photo_details(request, pk):
     photo = Photo.objects.get(pk=pk)
     likes = photo.like_set.all()
     comments = photo.comment_set.all()
-    comment_form = CommentForm()
+    comment_form = CommentForm(request.POST or None)
     photo_is_liked_by_user = likes.filter(user=request.user)
 
     context = {

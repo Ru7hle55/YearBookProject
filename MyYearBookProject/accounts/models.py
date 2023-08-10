@@ -1,4 +1,3 @@
-from enum import unique
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.core import validators
@@ -16,14 +15,14 @@ class ProjectUser(AbstractUser):
     first_name = models.CharField(
         max_length=30,
         validators=[
-            validators.MinLengthValidator(2),
+            validators.MinLengthValidator(2, message='Name should be at least 2 characters long'),
             validate_only_alphabetical_letters
         ],
     )
     last_name = models.CharField(
         max_length=30,
         validators=[
-            validators.MinLengthValidator(2),
+            validators.MinLengthValidator(2, message='Name should be at least 2 characters long'),
             validate_only_alphabetical_letters
         ],
     )
